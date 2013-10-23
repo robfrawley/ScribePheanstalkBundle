@@ -1,11 +1,15 @@
 {
-    "name": "leezy/pheanstalk-bundle",
+    "name": "scribe/pheanstalk-bundle",
     "description": "The LeezyPheanstalkBundle is a Symfony2 Bundle that provides a command line interface for manage the Beanstalkd workqueue server & a pheanstalk integration.",
     "keywords": ["Symfony2", "Beanstalkd", "Bundle", "Pheanstalk"],
     "type": "symfony-bundle",
-    "homepage": "https://github.com/armetiz/LeezyPheanstalkBundle",
+    "homepage": "https://github.com/scribenet/scribe-pheanstalk-bundle",
     "license": "BSD",
     "authors": [{
+        "name" : "Rob Frawley 2nd",
+        "email" : "rfrawley@scribenet.com",
+        "homepage": "http://www.scribenet.com"
+    },{
         "name" : "Thomas Tourlourat",
         "email" : "thomas@tourlourat.com",
         "homepage": "http://www.armetiz.info"
@@ -23,5 +27,5 @@
             "dev-master": "2.x-dev"
         }
     },
-    "target-dir": "Leezy/PheanstalkBundle"
+    "target-dir": "Scribe/PheanstalkBundle"
 }
