@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Tests;
+namespace Scribe\PheanstalkBundle\Tests;
 
 use Pheanstalk_Pheanstalk;
 

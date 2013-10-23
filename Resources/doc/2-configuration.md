@@ -10,7 +10,7 @@ This bundle can be configured, and this is the list of what you can do :
 
 ``` yaml
 # app/config/config.yml
-leezy_pheanstalk:
+scribe_pheanstalk:
     enabled: true
     pheanstalks:
         primary:
@@ -23,12 +23,12 @@ leezy_pheanstalk:
             proxy: acme.pheanstalk
 ```
 
-*acme.pheanstalk* is a custom proxy which implements the *Leezy\PheanstalkBundle\Proxy\PheanstalkProxyInterface* interface.
+*acme.pheanstalk* is a custom proxy which implements the *Scribe\PheanstalkBundle\Proxy\PheanstalkProxyInterface* interface.
 
 **Note:**
 ```
-    You can retreive each pheanstalk using the container with "leezy.pheanstalk.[pheanstalk_name]".
-    When you define a "default" pheanstalk. You can have a direct access to it with "leezy.pheanstalk".
+    You can retreive each pheanstalk using the container with "scribe.pheanstalk.[pheanstalk_name]".
+    When you define a "default" pheanstalk. You can have a direct access to it with "scribe.pheanstalk".
 ```
 
 ``` php
@@ -41,8 +41,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class HomeController extends Controller {
 
     public function indexAction() {
-        $pheanstalkPrimary = $this->get("leezy.pheanstalk.primary");
-        $pheanstalkSecondary = $this->get("leezy.pheanstalk");
+        $pheanstalkPrimary = $this->get("scribe.pheanstalk.primary");
+        $pheanstalkSecondary = $this->get("scribe.pheanstalk");
 
         // ----------------------------------------
         // producer (queues jobs) on beanstalk.domain.tld
@@ -65,7 +65,7 @@ class HomeController extends Controller {
 
         // ----------------------------------------
         // on each defined pheanstalks
-        $pheanstalkLocator = $this->get("leezy.pheanstalk.pheanstalk_locator");
+        $pheanstalkLocator = $this->get("scribe.pheanstalk.pheanstalk_locator");
 
         foreach($pheanstalkLocator->getPheanstalks() as $pheanstalk) {
             $pheanstalk

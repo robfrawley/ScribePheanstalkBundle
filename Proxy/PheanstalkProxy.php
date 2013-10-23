@@ -1,10 +1,10 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Proxy;
+namespace Scribe\PheanstalkBundle\Proxy;
 
 use Pheanstalk_PheanstalkInterface;
 
-use Leezy\PheanstalkBundle\Event\CommandEvent;
+use Scribe\PheanstalkBundle\Event\CommandEvent;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 

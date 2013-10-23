@@ -1,11 +1,11 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Listener;
+namespace Scribe\PheanstalkBundle\Listener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
-use Leezy\PheanstalkBundle\Event\CommandEvent;
-use Leezy\PheanstalkBundle\Proxy\PheanstalkProxyInterface;
+use Scribe\PheanstalkBundle\Event\CommandEvent;
+use Scribe\PheanstalkBundle\Proxy\PheanstalkProxyInterface;
 
 use Monolog\Logger;
 
@@ -50,7 +50,7 @@ class PheanstalkLogListener implements EventSubscriberInterface
 
     /**
      *
-     * @param \Leezy\PheanstalkBundle\Event\CommandEvent $eventArgs
+     * @param \Scribe\PheanstalkBundle\Event\CommandEvent $eventArgs
      */
     public function onCommand(CommandEvent $event)
     {

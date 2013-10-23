@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Command;
+namespace Scribe\PheanstalkBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -17,7 +17,7 @@ class PutCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('leezy:pheanstalk:put')
+            ->setName('scribe:pheanstalk:put')
             ->addArgument('tube', InputArgument::REQUIRED, 'Tube to put job.')
             ->addArgument('data', InputArgument::REQUIRED, 'The job data.')
             ->addArgument('priority', InputArgument::OPTIONAL, 'From 0 (most urgent) to 0xFFFFFFFF (least urgent).')
@@ -36,7 +36,7 @@ class PutCommand extends ContainerAwareCommand
         $ttr = $input->getArgument('ttr');
         $pheanstalkName = $input->getArgument('pheanstalk');
 
-        $pheanstalkLocator = $this->getContainer()->get('leezy.pheanstalk.pheanstalk_locator');
+        $pheanstalkLocator = $this->getContainer()->get('scribe.pheanstalk.pheanstalk_locator');
         $pheanstalk = $pheanstalkLocator->getPheanstalk($pheanstalkName);
 
         if (null === $pheanstalkName) {

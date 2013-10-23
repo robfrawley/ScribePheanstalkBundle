@@ -1,14 +1,14 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Tests\DependencyInjection;
+namespace Scribe\PheanstalkBundle\Tests\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
-use Leezy\PheanstalkBundle\DependencyInjection\LeezyPheanstalkExtension;
-use Leezy\PheanstalkBundle\LeezyPheanstalkBundle;
+use Scribe\PheanstalkBundle\DependencyInjection\ScribePheanstalkExtension;
+use Scribe\PheanstalkBundle\ScribePheanstalkBundle;
 
-class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
+class ScribePheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
 {
     private $container;
     private $extension;
@@ -16,9 +16,9 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->container = new ContainerBuilder();
-        $this->extension = new LeezyPheanstalkExtension();
+        $this->extension = new ScribePheanstalkExtension();
 
-        $bundle = new LeezyPheanstalkBundle();
+        $bundle = new ScribePheanstalkBundle();
         $bundle->build($this->container); // Attach all default factories
     }
 
@@ -30,7 +30,7 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
     public function testInitConfiguration()
     {
         $config = array(
-            "leezy_pheanstalk" => array (
+            "scribe_pheanstalk" => array (
                 "enabled" => true,
                 "pheanstalks" => array (
                     "primary" => array (
@@ -45,14 +45,14 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
         $this->extension->load($config, $this->container);
         $this->container->compile();
 
-        $this->assertTrue($this->container->hasDefinition('leezy.pheanstalk.pheanstalk_locator'));
-        $this->assertFalse($this->container->hasParameter('leezy.pheanstalk.pheanstalks'));
+        $this->assertTrue($this->container->hasDefinition('scribe.pheanstalk.pheanstalk_locator'));
+        $this->assertFalse($this->container->hasParameter('scribe.pheanstalk.pheanstalks'));
     }
 
     public function testDefaultPheanstalk()
     {
         $config = array(
-            "leezy_pheanstalk" => array (
+            "scribe_pheanstalk" => array (
                 "enabled" => true,
                 "pheanstalks" => array (
                     "primary" => array (
@@ -67,14 +67,14 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
         $this->extension->load($config, $this->container);
         $this->container->compile();
 
-        $this->assertTrue($this->container->hasDefinition('leezy.pheanstalk.primary'));
-        $this->assertTrue($this->container->hasAlias('leezy.pheanstalk'));
+        $this->assertTrue($this->container->hasDefinition('scribe.pheanstalk.primary'));
+        $this->assertTrue($this->container->hasAlias('scribe.pheanstalk'));
     }
 
     public function testNoDefaultPheanstalk()
     {
         $config = array(
-            "leezy_pheanstalk" => array (
+            "scribe_pheanstalk" => array (
                 "enabled" => true,
                 "pheanstalks" => array (
                     "primary" => array (
@@ -88,17 +88,17 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
         $this->extension->load($config, $this->container);
         $this->container->compile();
 
-        $this->assertTrue($this->container->hasDefinition('leezy.pheanstalk.primary'));
-        $this->assertFalse($this->container->hasAlias('leezy.pheanstalk'));
+        $this->assertTrue($this->container->hasDefinition('scribe.pheanstalk.primary'));
+        $this->assertFalse($this->container->hasAlias('scribe.pheanstalk'));
     }
 
     /**
-     * @expectedException Leezy\PheanstalkBundle\Exceptions\PheanstalkException
+     * @expectedException Scribe\PheanstalkBundle\Exceptions\PheanstalkException
      */
     public function testTwoDefaultPheanstalks()
     {
         $config = array(
-            "leezy_pheanstalk" => array (
+            "scribe_pheanstalk" => array (
                 "enabled" => true,
                 "pheanstalks" => array (
                     "one" => array (
@@ -119,7 +119,7 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
     public function testMultiplePheanstalks()
     {
         $config = array(
-            "leezy_pheanstalk" => array (
+            "scribe_pheanstalk" => array (
                 "enabled" => true,
                 "pheanstalks" => array (
                     "one" => array (
@@ -139,15 +139,15 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
         $this->extension->load($config, $this->container);
         $this->container->compile();
 
-        $this->assertTrue($this->container->hasDefinition('leezy.pheanstalk.one'));
-        $this->assertTrue($this->container->hasDefinition('leezy.pheanstalk.two'));
-        $this->assertTrue($this->container->hasDefinition('leezy.pheanstalk.three'));
+        $this->assertTrue($this->container->hasDefinition('scribe.pheanstalk.one'));
+        $this->assertTrue($this->container->hasDefinition('scribe.pheanstalk.two'));
+        $this->assertTrue($this->container->hasDefinition('scribe.pheanstalk.three'));
     }
 
     public function testPheanstalkLocator()
     {
         $config = array(
-            "leezy_pheanstalk" => array (
+            "scribe_pheanstalk" => array (
                 "enabled" => true,
                 "pheanstalks" => array (
                     "primary" => array (
@@ -162,7 +162,7 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
         $this->extension->load($config, $this->container);
         $this->container->compile();
 
-        $this->assertTrue($this->container->hasDefinition('leezy.pheanstalk.pheanstalk_locator'));
+        $this->assertTrue($this->container->hasDefinition('scribe.pheanstalk.pheanstalk_locator'));
     }
 
     /**
@@ -171,7 +171,7 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
     public function testPheanstalkProxyCustomTypeNotDefined()
     {
         $config = array(
-            "leezy_pheanstalk" => array (
+            "scribe_pheanstalk" => array (
                 "enabled" => true,
                 "pheanstalks" => array (
                     "primary" => array (
@@ -193,7 +193,7 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
     public function testPheanstalkReservedName()
     {
         $config = array(
-            "leezy_pheanstalk" => array (
+            "scribe_pheanstalk" => array (
                 "enabled" => true,
                 "pheanstalks" => array (
                     "proxy" => array (
@@ -212,7 +212,7 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
     public function testPheanstalkProxyCustomType()
     {
         $config = array(
-            "leezy_pheanstalk" => array (
+            "scribe_pheanstalk" => array (
                 "enabled" => true,
                 "pheanstalks" => array (
                     "primary" => array (
@@ -225,7 +225,7 @@ class LeezyPheanstalkExtensionTest extends \PHPUnit_Framework_TestCase
             )
         );
 
-        $this->container->setDefinition('acme.pheanstalk.pheanstalk_proxy', new Definition('Leezy\PheanstalkBundle\Proxy\PheanstalkProxyInterface'));
+        $this->container->setDefinition('acme.pheanstalk.pheanstalk_proxy', new Definition('Scribe\PheanstalkBundle\Proxy\PheanstalkProxyInterface'));
 
         $this->extension->load($config, $this->container);
         $this->container->compile();

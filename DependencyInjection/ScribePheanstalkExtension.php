@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\DependencyInjection;
+namespace Scribe\PheanstalkBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -9,14 +9,14 @@ use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
-use Leezy\PheanstalkBundle\Exceptions\PheanstalkException;
+use Scribe\PheanstalkBundle\Exceptions\PheanstalkException;
 
 /**
  * This is the class that loads and manages your bundle configuration
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class LeezyPheanstalkExtension extends Extension
+class ScribePheanstalkExtension extends Extension
 {
     protected function reservedName()
     {
@@ -57,18 +57,18 @@ class LeezyPheanstalkExtension extends Extension
      *
      * @param  \Symfony\Component\DependencyInjection\ContainerBuilder $container
      * @param  array                                                   $config
-     * @throws \Leezy\PheanstalkBundle\Exceptions\PheanstalkException
+     * @throws \Scribe\PheanstalkBundle\Exceptions\PheanstalkException
      */
     public function configureConnections(ContainerBuilder $container, array $config)
     {
         // Create a connection locator that will reference all existing connection
-        $connectionLocatorDef = new Definition("Leezy\PheanstalkBundle\PheanstalkLocator");
-        $container->setDefinition("leezy.pheanstalk.pheanstalk_locator", $connectionLocatorDef);
+        $connectionLocatorDef = new Definition("Scribe\PheanstalkBundle\PheanstalkLocator");
+        $container->setDefinition("scribe.pheanstalk.pheanstalk_locator", $connectionLocatorDef);
 
         $defaultPheanstalkName = null;
         $pheanstalks = $config['pheanstalks'];
 
-        $pheanstalkLocatorDef = $container->getDefinition("leezy.pheanstalk.pheanstalk_locator");
+        $pheanstalkLocatorDef = $container->getDefinition("scribe.pheanstalk.pheanstalk_locator");
 
         // For each connection in the configuration file
         foreach ($pheanstalks as $name => $pheanstalk) {
@@ -83,16 +83,16 @@ class LeezyPheanstalkExtension extends Extension
 
             //TODO: Add Reflection to check PheanstalkProxyInterface implementation
             //$pheanstalkRefl = new \ReflectionClass($pheanstalkDef->getClass());
-            //$pheanstalkRefl->implementsInterface('Leezy\PheanstalkBundle\Proxy\PheanstalkProxyInterface')
+            //$pheanstalkRefl->implementsInterface('Scribe\PheanstalkBundle\Proxy\PheanstalkProxyInterface')
             $pheanstalkDef->addMethodCall('setPheanstalk', array(new Definition('Pheanstalk_Pheanstalk', $pheanstalkConfig)));
             $pheanstalkDef->addMethodCall('setName', array($name));
 
-            $container->setDefinition("leezy.pheanstalk." . $name, $pheanstalkDef);
+            $container->setDefinition("scribe.pheanstalk." . $name, $pheanstalkDef);
 
             // Register the connection in the connection locator
             $pheanstalkLocatorDef->addMethodCall('addPheanstalk', array(
                 $name,
-                $container->getDefinition("leezy.pheanstalk." . $name),
+                $container->getDefinition("scribe.pheanstalk." . $name),
                 $isDefault
             ));
 
@@ -102,7 +102,7 @@ class LeezyPheanstalkExtension extends Extension
                 }
 
                 $defaultPheanstalkName = $name;
-                $container->setAlias("leezy.pheanstalk", "leezy.pheanstalk." . $name);
+                $container->setAlias("scribe.pheanstalk", "scribe.pheanstalk." . $name);
             }
         }
     }
@@ -116,17 +116,17 @@ class LeezyPheanstalkExtension extends Extension
     public function configureProfiler(ContainerBuilder $container, array $config)
     {
         // Setup the data collector service for Symfony profiler
-        $dataCollectorDef = new Definition('Leezy\PheanstalkBundle\DataCollector\PheanstalkDataCollector');
+        $dataCollectorDef = new Definition('Scribe\PheanstalkBundle\DataCollector\PheanstalkDataCollector');
         $dataCollectorDef->setPublic(false);
         $dataCollectorDef->addTag('data_collector', array('id' => 'pheanstalk', 'template' => $config['profiler']['template']));
-        $dataCollectorDef->addArgument(new Reference('leezy.pheanstalk.pheanstalk_locator'));
+        $dataCollectorDef->addArgument(new Reference('scribe.pheanstalk.pheanstalk_locator'));
 
-        $container->setDefinition("leezy.pheanstalk.data_collector", $dataCollectorDef);
+        $container->setDefinition("scribe.pheanstalk.data_collector", $dataCollectorDef);
     }
 
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasParameter('leezy.pheanstalk.pheanstalks')) {
+        if (!$container->hasParameter('scribe.pheanstalk.pheanstalks')) {
             return;
         }
 

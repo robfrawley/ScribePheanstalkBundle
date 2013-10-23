@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Command;
+namespace Scribe\PheanstalkBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -17,7 +17,7 @@ class StatsJobCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('leezy:pheanstalk:stats-job')
+            ->setName('scribe:pheanstalk:stats-job')
             ->addArgument('job', InputArgument::REQUIRED, 'Jod id to get stats.')
             ->addArgument('pheanstalk', InputArgument::OPTIONAL, 'Pheanstalk name.')
             ->setDescription('Gives statistical information about the specified job if it exists.');
@@ -28,7 +28,7 @@ class StatsJobCommand extends ContainerAwareCommand
         $jobId = $input->getArgument('job');
         $pheanstalkName = $input->getArgument('pheanstalk');
 
-        $pheanstalkLocator = $this->getContainer()->get('leezy.pheanstalk.pheanstalk_locator');
+        $pheanstalkLocator = $this->getContainer()->get('scribe.pheanstalk.pheanstalk_locator');
         $pheanstalk = $pheanstalkLocator->getPheanstalk($pheanstalkName);
 
         if (null === $pheanstalkName) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Command;
+namespace Scribe\PheanstalkBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -15,7 +15,7 @@ class FlushTubeCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('leezy:pheanstalk:flush-tube')
+            ->setName('scribe:pheanstalk:flush-tube')
             ->addArgument('tube', InputArgument::REQUIRED, 'Tube.')
             ->addArgument('pheanstalk', InputArgument::OPTIONAL, 'Pheanstalk name.')
             ->setDescription('Delete all job in a specific tube.');
@@ -26,7 +26,7 @@ class FlushTubeCommand extends ContainerAwareCommand
         $tube = $input->getArgument('tube');
         $pheanstalkName = $input->getArgument('pheanstalk');
 
-        $pheanstalkLocator = $this->getContainer()->get('leezy.pheanstalk.pheanstalk_locator');
+        $pheanstalkLocator = $this->getContainer()->get('scribe.pheanstalk.pheanstalk_locator');
         $pheanstalk = $pheanstalkLocator->getPheanstalk($pheanstalkName);
 
         if (null === $pheanstalkName) {

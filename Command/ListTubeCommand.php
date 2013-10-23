@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Command;
+namespace Scribe\PheanstalkBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -15,7 +15,7 @@ class ListTubeCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('leezy:pheanstalk:list-tube')
+            ->setName('scribe:pheanstalk:list-tube')
             ->addArgument('pheanstalk', InputArgument::OPTIONAL, 'Pheanstalk name.')
             ->setDescription('The names of all tubes on the server.');
     }
@@ -24,7 +24,7 @@ class ListTubeCommand extends ContainerAwareCommand
     {
         $pheanstalkName = $input->getArgument('pheanstalk');
 
-        $pheanstalkLocator = $this->getContainer()->get('leezy.pheanstalk.pheanstalk_locator');
+        $pheanstalkLocator = $this->getContainer()->get('scribe.pheanstalk.pheanstalk_locator');
         $pheanstalk = $pheanstalkLocator->getPheanstalk($pheanstalkName);
 
         if (null === $pheanstalkName) {

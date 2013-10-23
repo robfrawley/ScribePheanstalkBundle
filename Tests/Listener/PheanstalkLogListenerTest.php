@@ -1,8 +1,8 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Tests\Listener;
+namespace Scribe\PheanstalkBundle\Tests\Listener;
 
-use Leezy\PheanstalkBundle\Listener\PheanstalkLogListener;
+use Scribe\PheanstalkBundle\Listener\PheanstalkLogListener;
 
 class PheanstalkLogListenerTest extends \PHPUnit_Framework_TestCase
 {

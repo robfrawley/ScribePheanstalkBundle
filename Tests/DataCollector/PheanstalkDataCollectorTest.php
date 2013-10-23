@@ -1,9 +1,9 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Tests;
+namespace Scribe\PheanstalkBundle\Tests;
 
-use Leezy\PheanstalkBundle\PheanstalkLocator;
-use Leezy\PheanstalkBundle\DataCollector\PheanstalkDataCollector;
+use Scribe\PheanstalkBundle\PheanstalkLocator;
+use Scribe\PheanstalkBundle\DataCollector\PheanstalkDataCollector;
 
 class PheanstalkDataCollectorTest extends \PHPUnit_Framework_TestCase
 {

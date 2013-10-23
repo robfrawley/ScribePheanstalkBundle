@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Event;
+namespace Scribe\PheanstalkBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event as EventBase;
 
@@ -8,31 +8,31 @@ use Pheanstalk_PheanstalkInterface;
 
 class CommandEvent extends EventBase
 {
-    const BURY = "leezy.pheanstalk.event.bury";
-    const DELETE = "leezy.pheanstalk.event.delete";
-    const IGNORE = "leezy.pheanstalk.event.ignore";
-    const KICK = "leezy.pheanstalk.event.kick";
-    const KICK_JOB = "leezy.pheanstalk.event.kick_job";
-    const LIST_TUBE_USED = "leezy.pheanstalk.event.list_tube_used";
-    const LIST_TUBES = "leezy.pheanstalk.event.list_tubes";
-    const LIST_TUBES_WATCHED = "leezy.pheanstalk.event.list_tubes_watched";
-    const PAUSE_TUBE = "leezy.pheanstalk.event.pause_tube";
-    const PEEK = "leezy.pheanstalk.event.peek";
-    const PEEK_READY = "leezy.pheanstalk.event.peek_ready";
-    const PEEK_DELAYED = "leezy.pheanstalk.event.peek_delayed";
-    const PEEK_BURIED = "leezy.pheanstalk.event.peek_buried";
-    const PUT = "leezy.pheanstalk.event.put";
-    const PUT_IN_TUBE = "leezy.pheanstalk.event.put_in_tube";
-    const RELEASE = "leezy.pheanstalk.event.release";
-    const RESERVE = "leezy.pheanstalk.event.reserve";
-    const RESERVE_FROM_TUBE = "leezy.pheanstalk.event.reserve_from_tube";
-    const STATS = "leezy.pheanstalk.event.stats";
-    const STATS_TUBE = "leezy.pheanstalk.event.stats_tube";
-    const STATS_JOB = "leezy.pheanstalk.event.stats_job";
-    const TOUCH = "leezy.pheanstalk.event.touch";
-    const USE_TUBE = "leezy.pheanstalk.event.use_tube";
-    const WATCH = "leezy.pheanstalk.event.watch";
-    const WATCH_ONLY = "leezy.pheanstalk.event.watch_only";
+    const BURY = "scribe.pheanstalk.event.bury";
+    const DELETE = "scribe.pheanstalk.event.delete";
+    const IGNORE = "scribe.pheanstalk.event.ignore";
+    const KICK = "scribe.pheanstalk.event.kick";
+    const KICK_JOB = "scribe.pheanstalk.event.kick_job";
+    const LIST_TUBE_USED = "scribe.pheanstalk.event.list_tube_used";
+    const LIST_TUBES = "scribe.pheanstalk.event.list_tubes";
+    const LIST_TUBES_WATCHED = "scribe.pheanstalk.event.list_tubes_watched";
+    const PAUSE_TUBE = "scribe.pheanstalk.event.pause_tube";
+    const PEEK = "scribe.pheanstalk.event.peek";
+    const PEEK_READY = "scribe.pheanstalk.event.peek_ready";
+    const PEEK_DELAYED = "scribe.pheanstalk.event.peek_delayed";
+    const PEEK_BURIED = "scribe.pheanstalk.event.peek_buried";
+    const PUT = "scribe.pheanstalk.event.put";
+    const PUT_IN_TUBE = "scribe.pheanstalk.event.put_in_tube";
+    const RELEASE = "scribe.pheanstalk.event.release";
+    const RESERVE = "scribe.pheanstalk.event.reserve";
+    const RESERVE_FROM_TUBE = "scribe.pheanstalk.event.reserve_from_tube";
+    const STATS = "scribe.pheanstalk.event.stats";
+    const STATS_TUBE = "scribe.pheanstalk.event.stats_tube";
+    const STATS_JOB = "scribe.pheanstalk.event.stats_job";
+    const TOUCH = "scribe.pheanstalk.event.touch";
+    const USE_TUBE = "scribe.pheanstalk.event.use_tube";
+    const WATCH = "scribe.pheanstalk.event.watch";
+    const WATCH_ONLY = "scribe.pheanstalk.event.watch_only";
 
     private $pheanstalk;
     private $payload;
@@ -44,7 +44,7 @@ class CommandEvent extends EventBase
     }
 
     /**
-     * @return \Leezy\PheanstalkBundle\Proxy\PheanstalkInterface
+     * @return \Scribe\PheanstalkBundle\Proxy\PheanstalkInterface
      */
     public function getPheanstalk()
     {

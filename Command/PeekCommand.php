@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Command;
+namespace Scribe\PheanstalkBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -17,7 +17,7 @@ class PeekCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('leezy:pheanstalk:peek')
+            ->setName('scribe:pheanstalk:peek')
             ->addArgument('job', InputArgument::REQUIRED, 'The job to peek.')
             ->addArgument('pheanstalk', InputArgument::OPTIONAL, 'Pheanstalk name.')
             ->setDescription('Inspect a job in the system, regardless of what tube it is in.');
@@ -28,7 +28,7 @@ class PeekCommand extends ContainerAwareCommand
         $jobId = $input->getArgument('job');
         $pheanstalkName = $input->getArgument('pheanstalk');
 
-        $pheanstalkLocator = $this->getContainer()->get('leezy.pheanstalk.pheanstalk_locator');
+        $pheanstalkLocator = $this->getContainer()->get('scribe.pheanstalk.pheanstalk_locator');
         $pheanstalk = $pheanstalkLocator->getPheanstalk($pheanstalkName);
 
         if (null === $pheanstalkName) {

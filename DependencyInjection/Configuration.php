@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\DependencyInjection;
+namespace Scribe\PheanstalkBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,14 +18,14 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('leezy_pheanstalk')->children();
+        $rootNode = $treeBuilder->root('scribe_pheanstalk')->children();
 
         $rootNode
             ->arrayNode('profiler')
                 ->addDefaultsIfNotSet()
                 ->children()
                     ->scalarNode('enabled')->defaultValue('%kernel.debug%')->end()
-                    ->scalarNode('template')->defaultValue('LeezyPheanstalkBundle:Profiler:pheanstalk.html.twig')->end()
+                    ->scalarNode('template')->defaultValue('ScribePheanstalkBundle:Profiler:pheanstalk.html.twig')->end()
                 ->end()
             ->end()
             ->booleanNode("enabled")->defaultTrue()->end()
@@ -51,7 +51,7 @@ class Configuration implements ConfigurationInterface
                         ->end()
                         ->scalarNode("proxy")
                             ->cannotBeEmpty()
-                            ->defaultValue("leezy.pheanstalk.proxy.default")
+                            ->defaultValue("scribe.pheanstalk.proxy.default")
                         ->end()
                     ->end()
                 ->end()

@@ -4,20 +4,20 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="leezy.pheanstalk.proxy.class">Leezy\PheanstalkBundle\Proxy\PheanstalkProxy</parameter>
-        <parameter key="leezy.pheanstalk.listener.log.class">Leezy\PheanstalkBundle\Listener\PheanstalkLogListener</parameter>
+        <parameter key="scribe.pheanstalk.proxy.class">Scribe\PheanstalkBundle\Proxy\PheanstalkProxy</parameter>
+        <parameter key="scribe.pheanstalk.listener.log.class">Scribe\PheanstalkBundle\Listener\PheanstalkLogListener</parameter>
     </parameters>
 
     <services>
         <!-- proxy -->
-        <service id="leezy.pheanstalk.proxy.default" class="%leezy.pheanstalk.proxy.class%">
+        <service id="scribe.pheanstalk.proxy.default" class="%scribe.pheanstalk.proxy.class%">
             <call method="setDispatcher">
                 <argument type="service" id="event_dispatcher" on-invalid="ignore"/>
             </call>
         </service>
 
         <!-- listener -->
-        <service id="leezy.pheanstalk.listener.log" class="%leezy.pheanstalk.listener.log.class%">
+        <service id="scribe.pheanstalk.listener.log" class="%scribe.pheanstalk.listener.log.class%">
             <call method="setLogger">
                 <argument type="service" id="logger" on-invalid="ignore"/>
             </call>

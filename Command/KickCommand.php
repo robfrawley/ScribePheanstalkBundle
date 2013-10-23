@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Command;
+namespace Scribe\PheanstalkBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -17,7 +17,7 @@ class KickCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('leezy:pheanstalk:kick')
+            ->setName('scribe:pheanstalk:kick')
             ->addArgument('tube', InputArgument::REQUIRED, 'The tube to kick the jobs from.')
             ->addArgument('max', InputArgument::OPTIONAL, 'The maximum job to kick from this tube.', 1)
             ->addArgument('pheanstalk', InputArgument::OPTIONAL, 'Pheanstalk name.')
@@ -30,7 +30,7 @@ class KickCommand extends ContainerAwareCommand
         $max = $input->getArgument('max');
         $pheanstalkName = $input->getArgument('pheanstalk');
 
-        $pheanstalkLocator = $this->getContainer()->get('leezy.pheanstalk.pheanstalk_locator');
+        $pheanstalkLocator = $this->getContainer()->get('scribe.pheanstalk.pheanstalk_locator');
         $pheanstalk = $pheanstalkLocator->getPheanstalk($pheanstalkName);
 
         if (null === $pheanstalkName) {

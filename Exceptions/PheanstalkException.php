@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Exceptions;
+namespace Scribe\PheanstalkBundle\Exceptions;
 
 use Exception;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Proxy;
+namespace Scribe\PheanstalkBundle\Proxy;
 
 use Pheanstalk_PheanstalkInterface;
 

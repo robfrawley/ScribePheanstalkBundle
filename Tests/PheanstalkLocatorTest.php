@@ -1,8 +1,8 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Tests;
+namespace Scribe\PheanstalkBundle\Tests;
 
-use Leezy\PheanstalkBundle\PheanstalkLocator;
+use Scribe\PheanstalkBundle\PheanstalkLocator;
 
 class PheanstalkLocatorTest extends \PHPUnit_Framework_TestCase
 {

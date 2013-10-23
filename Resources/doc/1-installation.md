@@ -2,18 +2,18 @@
 
 Installation is a quick 3 step process:
 
-1. Download LeezyPheanstalkBundle using composer
+1. Download ScribePheanstalkBundle using composer
 2. Enable the Bundle
 3. Configure your application's config.yml
 
-### Step 1: Download LeezyPheanstalkBundle
+### Step 1: Download ScribePheanstalkBundle
 
-Add LeezyPheanstalkBundle in your composer.json:
+Add ScribePheanstalkBundle in your composer.json:
 
 ```js
 {
     "require": {
-        "leezy/pheanstalk-bundle": "2.*"
+        "scribe/pheanstalk-bundle": "2.*"
     }
 }
 ```
@@ -21,10 +21,10 @@ Add LeezyPheanstalkBundle in your composer.json:
 Now tell composer to download the bundle by running the command:
 
 ``` bash
-$ php composer.phar update leezy/pheanstalk-bundle
+$ php composer.phar update scribe/pheanstalk-bundle
 ```
 
-Composer will install the bundle to your project's `vendor/leezy` directory.
+Composer will install the bundle to your project's `vendor/scribe` directory.
 
 ### Step 2: Enable the bundle
 
@@ -38,7 +38,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new Leezy\PheanstalkBundle\LeezyPheanstalkBundle(),
+        new Scribe\PheanstalkBundle\ScribePheanstalkBundle(),
     );
 }
 ```
@@ -49,7 +49,7 @@ Finally, add the following to your config.yml
 
 ``` yaml
 # app/config/config.yml
-leezy_pheanstalk:
+scribe_pheanstalk:
     enabled: true
     pheanstalks:
         primary:

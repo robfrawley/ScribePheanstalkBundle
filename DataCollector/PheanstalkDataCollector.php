@@ -1,16 +1,16 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\DataCollector;
+namespace Scribe\PheanstalkBundle\DataCollector;
 
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Leezy\PheanstalkBundle\Proxy\PheanstalkProxyInterface;
+use Scribe\PheanstalkBundle\Proxy\PheanstalkProxyInterface;
 
-use Leezy\PheanstalkBundle\PheanstalkLocator;
+use Scribe\PheanstalkBundle\PheanstalkLocator;
 
 /**
- * This is the data collector for LeezyPheanstalkBundle
+ * This is the data collector for ScribePheanstalkBundle
  *
  * @see http://symfony.com/doc/current/cookbook/profiler/data_collector.html
  * @author Maxime Aoustin <max44410@gmail.com>

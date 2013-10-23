@@ -1,6 +1,6 @@
 {
     "name": "scribe/pheanstalk-bundle",
-    "description": "The LeezyPheanstalkBundle is a Symfony2 Bundle that provides a command line interface for manage the Beanstalkd workqueue server & a pheanstalk integration.",
+    "description": "The ScribePheanstalkBundle is a Symfony2 Bundle that provides a command line interface for manage the Beanstalkd workqueue server & a pheanstalk integration.",
     "keywords": ["Symfony2", "Beanstalkd", "Bundle", "Pheanstalk"],
     "type": "symfony-bundle",
     "homepage": "https://github.com/scribenet/scribe-pheanstalk-bundle",
@@ -20,7 +20,7 @@
         "symfony/monolog-bridge": ">=2.0"
     },
     "autoload": {
-        "psr-0": { "Leezy\\PheanstalkBundle": "" }
+        "psr-0": { "Scribe\\PheanstalkBundle": "" }
     },
     "extra": {
         "branch-alias": {

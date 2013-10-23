@@ -1,13 +1,13 @@
 <?php
 
-namespace Leezy\PheanstalkBundle\Tests\Proxy;
+namespace Scribe\PheanstalkBundle\Tests\Proxy;
 
-use Leezy\PheanstalkBundle\Proxy\PheanstalkProxy;
+use Scribe\PheanstalkBundle\Proxy\PheanstalkProxy;
 
 class PheanstalkProxyTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \Leezy\PheanstalkBundle\Proxy\PheanstalkProxy
+     * @var \Scribe\PheanstalkBundle\Proxy\PheanstalkProxy
      */
     protected $pheanstalkProxy;
 
@@ -30,7 +30,7 @@ class PheanstalkProxyTest extends \PHPUnit_Framework_TestCase
 
     public function testInterfaces()
     {
-        $this->assertInstanceOf('Leezy\PheanstalkBundle\Proxy\PheanstalkProxyInterface', $this->pheanstalkProxy);
+        $this->assertInstanceOf('Scribe\PheanstalkBundle\Proxy\PheanstalkProxyInterface', $this->pheanstalkProxy);
         $this->assertInstanceOf('Pheanstalk_PheanstalkInterface', $this->pheanstalkProxy);
     }
 

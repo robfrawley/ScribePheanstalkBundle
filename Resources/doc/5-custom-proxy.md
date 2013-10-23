@@ -1,19 +1,19 @@
 ## Custom proxy
 
-Add a custom proxy only if you can't do what you want using [Events](https://github.com/armetiz/LeezyPheanstalkBundle/blob/master/Resources/doc/4-events.md) hook system.
+Add a custom proxy only if you can't do what you want using [Events](https://github.com/armetiz/ScribePheanstalkBundle/blob/master/Resources/doc/4-events.md) hook system.
 
 # Create a proxy class
 
 Two choices: 
-* Implement **Leezy\PheanstalkBundle\Proxy\PheanstalkProxyInterface**
-* Extend **Leezy\PheanstalkBundle\Proxy\PheanstalkProxy**
+* Implement **Scribe\PheanstalkBundle\Proxy\PheanstalkProxyInterface**
+* Extend **Scribe\PheanstalkBundle\Proxy\PheanstalkProxy**
 
 ```php
 <?php
 
 namespace Acme\DemoBundle\Proxy;
 
-use Leezy\PheanstalkBundle\Proxy\PheanstalkProxy as PheanstalkProxyBase;
+use Scribe\PheanstalkBundle\Proxy\PheanstalkProxy as PheanstalkProxyBase;
 
 class PheanstalkProxy extends PheanstalkProxyBase {
     /**
@@ -45,7 +45,7 @@ The injection of a dispatcher isn't mandatory. Don't inject it and the logger wi
 
 ``` yaml
 # app/config/config.yml
-leezy_pheanstalk:
+scribe_pheanstalk:
     pheanstalks:
         foo_bar:
             server: beanstalkd-2.domain.tld
