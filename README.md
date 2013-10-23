@@ -1,9 +1,5 @@
 ## LeezyPheanstalkBundle
 
-[![project status](http://stillmaintained.com/armetiz/LeezyPheanstalkBundle.png)](http://stillmaintained.com/armetiz/LeezyPheanstalkBundle)
-[![Build Status](https://secure.travis-ci.org/armetiz/LeezyPheanstalkBundle.png)](http://travis-ci.org/armetiz/LeezyPheanstalkBundle)
-[![Packagist](https://poser.pugx.org/leezy/pheanstalk-bundle/downloads.png)](https://packagist.org/packages/leezy/pheanstalk-bundle)
-
 [Beanstalkd workqueue](http://kr.github.com/beanstalkd/) clients for Symfony2.
 
 The LeezyPheanstalkBundle is a Symfony2 Bundle that provides a [pheanstalk](https://github.com/pda/pheanstalk) integration with the following features:
